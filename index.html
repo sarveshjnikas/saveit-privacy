@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SaveIt — Save anything in three clicks</title>
-  <meta name="description" content="SaveIt lets you save links, photos, videos, documents, and contacts from any app — organized, offline, and completely private." />
-  <meta property="og:title" content="SaveIt — Save anything in three clicks" />
-  <meta property="og:description" content="Save links, photos, videos, documents, and contacts from any app. Offline. Private. No account needed." />
+  <title>My Saves — One place for everything you save</title>
+  <meta name="description" content="Stop self-messaging on WhatsApp. Stop cluttering your gallery with screenshots. My Saves is one private, offline place for everything." />
+  <meta property="og:title" content="My Saves — One place for everything you save" />
+  <meta property="og:description" content="Links, screenshots, notes, videos — organized, offline, and completely private. No account. No cloud. No one watching." />
   <meta property="og:image" content="icon.png" />
-  <meta name="theme-color" content="#F9F9FE" />
+  <meta name="theme-color" content="#0d0d0f" />
   <style>
     :root {
-      --bg:       #F9F9FE;
-      --card:     #ffffff;
-      --border:   #e2e2e7;
-      --text-1:   #1a1c1f;
-      --text-2:   #4c4546;
-      --text-3:   #7e7576;
+      --bg:       #0d0d0f;
+      --card:     #1c1c1e;
+      --border:   #2c2c2e;
+      --text-1:   #f2f2f7;
+      --text-2:   #aeaeb2;
+      --text-3:   #636366;
       --blue:     #3478F6;
       --indigo:   #5E5CE6;
       --green:    #34C759;
@@ -28,7 +28,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -39,13 +38,13 @@
       overflow-x: hidden;
     }
 
-    /* ── Hero ────────────────────────────────────────────────── */
+    /* ── Hero ── */
     .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 72px 24px 56px;
+      padding: 72px 24px 48px;
     }
 
     .app-icon {
@@ -53,31 +52,34 @@
       height: 88px;
       border-radius: 20px;
       margin-bottom: 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+      background: #ffffff;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.40);
     }
 
     .hero h1 {
-      font-size: clamp(44px, 10vw, 64px);
+      font-size: clamp(38px, 9vw, 58px);
       font-weight: 800;
-      letter-spacing: -2.5px;
-      line-height: 1;
-      margin-bottom: 16px;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      max-width: 520px;
     }
 
     .hero p {
-      font-size: clamp(17px, 4vw, 20px);
+      font-size: clamp(16px, 4vw, 19px);
       color: var(--text-2);
-      line-height: 1.55;
-      max-width: 340px;
+      line-height: 1.6;
+      max-width: 360px;
       margin-bottom: 36px;
     }
 
+    /* ── CTA button ── */
     .cta-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       background: var(--text-1);
-      color: #fff;
+      color: var(--bg);
       text-decoration: none;
       padding: 15px 28px;
       border-radius: var(--radius-pill);
@@ -88,24 +90,64 @@
     }
     .cta-btn:hover { opacity: 0.82; }
 
-    .cta-btn svg { flex-shrink: 0; }
-
-    .local-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 16px;
+    .hero-sub {
+      margin-top: 14px;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--text-3);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    /* ── Screenshots ─────────────────────────────────────────── */
-    .screenshots {
-      padding: 16px 0 64px;
+    /* ── Pain section ── */
+    .pain-section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
     }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 560px) {
+      .pain-grid { grid-template-columns: 1fr; }
+    }
+
+    .pain-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 22px 20px;
+    }
+
+    .pain-before {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    .pain-card p {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+
+    .pain-card p strong {
+      color: var(--text-1);
+      font-weight: 600;
+    }
+
+    /* ── Screenshots ── */
+    .screenshots { padding: 0 0 64px; }
 
     .screenshots-track {
       display: flex;
@@ -123,21 +165,19 @@
       flex-shrink: 0;
       width: clamp(180px, 30vw, 220px);
       scroll-snap-align: start;
-      transform: translateY(0);
-      transition: transform 0.3s ease;
     }
-    .phone:nth-child(2) { transform: translateY(-12px); }
-    .phone:nth-child(4) { transform: translateY(-12px); }
+    .phone:nth-child(2) { transform: translateY(-14px); }
+    .phone:nth-child(4) { transform: translateY(-14px); }
 
     .phone img {
       width: 100%;
       border-radius: 28px;
       border: 1px solid var(--border);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.30), 0 4px 16px rgba(0,0,0,0.14);
       display: block;
     }
 
-    /* ── Section wrapper ─────────────────────────────────────── */
+    /* ── Section wrapper ── */
     .section {
       max-width: 680px;
       margin: 0 auto;
@@ -153,7 +193,7 @@
       margin-bottom: 20px;
     }
 
-    /* ── Feature grid ────────────────────────────────────────── */
+    /* ── Feature grid ── */
     .features-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -194,7 +234,7 @@
       line-height: 1.55;
     }
 
-    /* ── Category chips ──────────────────────────────────────── */
+    /* ── Category chips ── */
     .cat-row {
       display: flex;
       flex-wrap: wrap;
@@ -222,7 +262,7 @@
       flex-shrink: 0;
     }
 
-    /* ── Steps ───────────────────────────────────────────────── */
+    /* ── Steps ── */
     .steps { display: flex; flex-direction: column; }
 
     .step {
@@ -239,7 +279,7 @@
       height: 32px;
       min-width: 32px;
       background: var(--text-1);
-      color: #fff;
+      color: var(--bg);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -262,27 +302,39 @@
       line-height: 1.55;
     }
 
-    /* ── Privacy banner ──────────────────────────────────────── */
+    /* ── Privacy banner ── */
     .privacy-banner {
-      background: var(--text-1);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 24px;
-      padding: 40px 32px;
+      padding: 44px 32px;
       text-align: center;
     }
 
+    .privacy-eyebrow {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+      opacity: 0.9;
+    }
+
     .privacy-banner h2 {
-      font-size: 26px;
+      font-size: clamp(24px, 5vw, 32px);
       font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.8px;
-      margin-bottom: 10px;
+      color: var(--text-1);
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 14px;
     }
 
     .privacy-banner p {
       font-size: 15px;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.6;
-      max-width: 380px;
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 400px;
       margin: 0 auto 28px;
     }
 
@@ -294,16 +346,16 @@
     }
 
     .ppill {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.18);
-      color: rgba(255,255,255,0.9);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-1);
       padding: 8px 16px;
       border-radius: var(--radius-pill);
       font-size: 13px;
       font-weight: 500;
     }
 
-    /* ── Footer ──────────────────────────────────────────────── */
+    /* ── Footer ── */
     footer {
       text-align: center;
       padding: 32px 24px 48px;
@@ -311,12 +363,8 @@
       color: var(--text-3);
     }
 
-    footer a {
-      color: var(--text-3);
-      text-decoration: none;
-    }
+    footer a { color: var(--text-3); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
-
     .footer-divider { margin: 0 10px; opacity: 0.4; }
   </style>
 </head>
@@ -324,70 +372,65 @@
 
   <!-- ── Hero ── -->
   <section class="hero">
-    <img src="icon.png" alt="SaveIt app icon" class="app-icon" />
-    <h1>SaveIt</h1>
-    <p>Save anything in three clicks.<br>Completely offline.</p>
+    <img src="icon.png" alt="My Saves app icon" class="app-icon" />
+    <div style="font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-3); margin-bottom:12px;">My Saves</div>
+    <h1>Your phone has no real save button.</h1>
+    <p>Screenshots flood your gallery. Links rot in Notes. Important stuff buried in WhatsApp self-messages. My Saves fixes all of it — privately, offline, forever.</p>
+
     <a href="#" class="cta-btn">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9S4.86 16.5 9 16.5 16.5 13.14 16.5 9 13.14 1.5 9 1.5z" fill="white" fill-opacity="0.25"/>
-        <path d="M7.125 5.625L11.625 9l-4.5 3.375V5.625z" fill="white"/>
-      </svg>
-      Coming Soon on the App Store
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on the App Store
     </a>
-    <span class="local-badge">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M2 4l5-2.5L12 4v3c0 2.8-2 5-5 5.5C4 12 2 9.8 2 7V4z" stroke="#7e7576" stroke-width="1.2" fill="none"/>
-        <path d="M5 7l1.5 1.5L9 5.5" stroke="#7e7576" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Local-first storage
-    </span>
+    <div style="display:flex; gap:8px; margin-top:16px; flex-wrap:wrap; justify-content:center;">
+      <span class="ppill">📱 Your data never leaves your phone</span>
+    </div>
   </section>
 
   <!-- ── Screenshots ── -->
   <section class="screenshots">
     <div class="screenshots-track">
       <div class="phone">
-        <img src="screenshots/onboarding.png" alt="SaveIt onboarding" />
+        <img src="screenshots/onboarding.PNG" alt="My Saves onboarding" />
       </div>
       <div class="phone">
-        <img src="screenshots/library.png" alt="SaveIt library" />
+        <img src="screenshots/library.PNG" alt="My Saves library" />
       </div>
       <div class="phone">
-        <img src="screenshots/detail.png" alt="Category detail" />
+        <img src="screenshots/detail.PNG" alt="Category detail" />
       </div>
       <div class="phone">
-        <img src="screenshots/new-category.png" alt="New Category" />
+        <img src="screenshots/new-category.PNG" alt="New Category" />
       </div>
     </div>
   </section>
 
   <!-- ── Features ── -->
   <section class="section">
-    <div class="section-label">Features</div>
+    <div class="section-label">What you get</div>
     <div class="features-grid">
 
       <div class="feature-card">
-        <div class="f-icon" style="background:#EBF3FF;">📤</div>
-        <h3>Save from anywhere</h3>
-        <p>Share directly from Safari, Photos, Files, or any app — in three taps.</p>
+        <div class="f-icon" style="background:#1a2a3a;">📤</div>
+        <h3>Save from any app</h3>
+        <p>Tap Share in Safari, Photos, Files, or anywhere. My Saves catches it in three taps.</p>
       </div>
 
       <div class="feature-card">
-        <div class="f-icon" style="background:#F0FBF4;">🗂️</div>
-        <h3>Everything in one place</h3>
-        <p>Links, photos, videos, documents, contacts and notes — all organized.</p>
+        <div class="f-icon" style="background:#1a2e1e;">🗂️</div>
+        <h3>One home for everything</h3>
+        <p>Links, screenshots, videos, documents, contacts, notes — finally in one organized place.</p>
       </div>
 
       <div class="feature-card">
-        <div class="f-icon" style="background:#FEF3EB;">🔒</div>
-        <h3>Completely private</h3>
-        <p>Nothing leaves your device. No account, no cloud, no tracking. Ever.</p>
+        <div class="f-icon" style="background:#2a1a1a;">🔒</div>
+        <h3>No one can see it but you</h3>
+        <p>Everything stays on your device. No server ever touches your data. Not even us.</p>
       </div>
 
       <div class="feature-card">
-        <div class="f-icon" style="background:#F6EEFF;">✏️</div>
-        <h3>Your categories</h3>
-        <p>Create custom categories with icons and colors that match how you think.</p>
+        <div class="f-icon" style="background:#221a2e;">✏️</div>
+        <h3>Your categories, your rules</h3>
+        <p>Custom categories with icons and colors. Organize exactly how you work.</p>
       </div>
 
     </div>
@@ -410,8 +453,8 @@
       <div class="step">
         <div class="step-num">1</div>
         <div>
-          <h3>See something worth saving</h3>
-          <p>Tap the Share button in any app — Safari, Photos, Files, Contacts, anywhere on your iPhone.</p>
+          <h3>See something worth keeping</h3>
+          <p>Tap the Share button in any app on your iPhone.</p>
         </div>
       </div>
 
@@ -419,7 +462,7 @@
         <div class="step-num">2</div>
         <div>
           <h3>Pick a category</h3>
-          <p>SaveIt auto-suggests the right category. Change it with a single scroll if you want.</p>
+          <p>My Saves auto-suggests the right one. One scroll to change it. Then tap Save.</p>
         </div>
       </div>
 
@@ -427,7 +470,7 @@
         <div class="step-num">3</div>
         <div>
           <h3>It's saved. That's it.</h3>
-          <p>Open SaveIt any time to browse, filter, and find everything you've saved — no internet needed.</p>
+          <p>Browse, filter, find anything — no internet needed. It's yours, on your device, always.</p>
         </div>
       </div>
 
@@ -437,13 +480,15 @@
   <!-- ── Privacy ── -->
   <section class="section">
     <div class="privacy-banner">
-      <h2>Built for privacy</h2>
-      <p>SaveIt stores everything locally on your device. No servers. No accounts. No ads. Your data is entirely yours.</p>
+      <div class="privacy-eyebrow">Built for privacy</div>
+      <h2>Save the stuff you'd never screenshot.</h2>
+      <p>That article you don't want in your camera roll. That link you'd rather not explain. The research you want to keep quiet. My Saves stores everything on your device only — no servers, no account, no one looking.</p>
       <div class="privacy-pills">
         <span class="ppill">No account required</span>
         <span class="ppill">Works fully offline</span>
         <span class="ppill">No data collected</span>
-        <span class="ppill">No ads ever</span>
+        <span class="ppill">No ads, ever</span>
+        <span class="ppill">Deleted when you say so</span>
       </div>
     </div>
   </section>
@@ -451,11 +496,12 @@
   <!-- ── Footer ── -->
   <footer>
     <p>
-      © 2025 SaveIt
+      © 2025 My Saves
       <span class="footer-divider">·</span>
       <a href="privacy.html">Privacy Policy</a>
     </p>
   </footer>
+
 
 </body>
 </html>
